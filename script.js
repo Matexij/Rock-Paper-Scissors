@@ -1,4 +1,6 @@
 let options = ['paper', 'scissors', 'rock']
+let myscore = 0
+    let hisscore = 0
 function getComputerChoice(){
     let randNum = Math.floor(Math.random() * options.length)
     return options[randNum]
@@ -21,22 +23,22 @@ function playRound(playerSelection, computerSelection){
     return score
 }
 
-const playerSelection = "rock"
-function playGame(){
-    let myscore = 0
-    let hisscore = 0
-    for(let i=0; i<5; i++){
-        const computerSelection = getComputerChoice()
-        console.log(playerSelection, computerSelection)
-        let oneGame = playRound(playerSelection,computerSelection)
-        if(oneGame==1)
-            hisscore++
-        else if(oneGame==2)
-            myscore++
-    }
-    console.log(myscore + ":" + hisscore)
+function playGame(playerSelection){
+    //console.log(playerSelection)
+    
+    const computerSelection = getComputerChoice()
+    document.getElementById('enemyChoice').innerText = computerSelection
+    document.getElementById('yourChoice').innerHTML = playerSelection
+    //console.log(playerSelection, computerSelection)
+    let oneGame = playRound(playerSelection,computerSelection)
+    if(oneGame==1)
+        hisscore++
+    else if(oneGame==2)
+        myscore++
+
+    document.getElementById("yourChoiceMain1").style.display="block";
+    console.log(document.getElementById("yourChoiceMain1").style.display)
+    document.getElementById('score').innerText = myscore + ":" + hisscore
+    
 }
-
-playGame()
-
 
